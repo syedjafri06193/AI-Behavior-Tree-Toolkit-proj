@@ -1,0 +1,20 @@
+{
+  "name": "@aib/editor",
+  "version": "1.0.0",
+  "description": "Authoring format, validation, compiler, debug client and replay tooling for the AI Behavior Toolkit",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "compile": "tsx src/cli/aibc.ts"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

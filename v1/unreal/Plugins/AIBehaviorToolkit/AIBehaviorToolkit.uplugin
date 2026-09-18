@@ -1,0 +1,39 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0.0",
+  "FriendlyName": "AI Behavior Toolkit",
+  "Description": "Utility AI for Behavior Trees and StateTree, authored in a diffable text format, debuggable from cooked builds and dedicated servers.",
+  "Category": "AI",
+  "CreatedBy": "",
+  "CanContainContent": false,
+  "IsBetaVersion": false,
+  "Installed": false,
+  "EngineVersion": "5.4.0",
+  "Modules": [
+    {
+      "Name": "AIBehaviorCore",
+      "Type": "Runtime",
+      "LoadingPhase": "PreDefault"
+    },
+    {
+      "Name": "AIBehaviorRuntime",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Name": "AIBehaviorDebug",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    },
+    {
+      "Name": "AIBehaviorEditor",
+      "Type": "Editor",
+      "LoadingPhase": "PostEngineInit"
+    }
+  ],
+  "Plugins": [
+    { "Name": "GameplayStateTreeModule", "Enabled": true },
+    { "Name": "StateTree", "Enabled": true }
+  ]
+}

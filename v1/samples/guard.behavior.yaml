@@ -1,0 +1,70 @@
+version: 1
+type: utility
+name: GuardBehavior
+
+inputs:
+  - { name: DistanceToTarget, source: blackboard, key: TargetActor, transform: distance }
+  - { name: Health, source: attribute, key: HealthPercent }
+  - { name: AmmoRatio, source: attribute, key: AmmoPercent }
+  - { name: TimeSinceLastSeen, source: blackboard, key: LastSeenTime, transform: elapsed }
+  - { name: AllyCount, source: blackboard, key: NearbyAllies }
+
+actions:
+  - name: TakeCover
+    bucket: 0
+    considerations:
+      - input: Health
+        range: [0, 1]
+        curve: { type: logistic, m: -1.0, k: 1.0, b: 0.0, c: 0.0 }
+      - input: DistanceToTarget
+        range: [0, 3000]
+        curve: { type: polynomial, m: -1.0, k: 2.0, b: 1.0, c: 0.0 }
+    task: { type: MoveToCover, params: { searchRadius: 1500 } }
+
+  - name: Attack
+    bucket: 1
+    considerations:
+      - input: AmmoRatio
+        range: [0, 1]
+        curve: { type: linear, m: 1.0, k: 1.0, b: 0.0, c: 0.0 }
+      - input: DistanceToTarget
+        range: [0, 3000]
+        curve: { type: polynomial, m: -1.0, k: 1.0, b: 1.0, c: 0.0 }
+    task: { type: FireAtTarget }
+
+  - name: Reload
+    bucket: 1
+    weight: 0.9
+    interruptible: false
+    considerations:
+      - input: AmmoRatio
+        range: [0, 1]
+        curve: { type: polynomial, m: -1.0, k: 2.0, b: 1.0, c: 0.0 }
+      - input: DistanceToTarget
+        range: [0, 3000]
+        curve: { type: linear, m: 1.0, k: 1.0, b: 0.0, c: 0.0 }
+    task: { type: Reload }
+
+  - name: Investigate
+    bucket: 2
+    considerations:
+      - input: TimeSinceLastSeen
+        range: [0, 30]
+        curve: { type: polynomial, m: -1.0, k: 1.0, b: 1.0, c: 0.0 }
+    task: { type: Investigate }
+
+  - name: Patrol
+    bucket: 3
+    weight: 0.6
+    considerations:
+      - input: TimeSinceLastSeen
+        range: [0, 30]
+        curve: { type: linear, m: 1.0, k: 1.0, b: 0.0, c: 0.0 }
+    task: { type: Patrol }
+
+policy:
+  evaluationHz: 5
+  currentActionBonus: 1.1
+  minCommitmentSeconds: 0.5
+  switchThreshold: 0.05
+  bucketSatisfiedThreshold: 0.3
