@@ -49,3 +49,11 @@ The Unreal plugin isn't built by `make`; see [`v1/unreal/README.md`](v1/unreal/R
 | [v1](v1/) | C++ utility core, TS editor toolchain, Unreal BT/StateTree plugin, record/replay | — |
 
 Add a row per version as new iterations land.
+
+## Feedback
+
+Feedback, bug reports and ideas are welcome.
+
+- **Bugs or problems:** [open an issue](https://github.com/syedjafri06193/AI-Behavior-Tree-Toolkit-proj/issues/new) and include your engine or runtime version, a minimal tree that reproduces the problem, and what you expected to happen.
+- **Ideas or questions:** start a thread in [Discussions](https://github.com/syedjafri06193/AI-Behavior-Tree-Toolkit-proj/discussions) (enable it under Settings → General → Features).
+- **Code changes:** pull requests are appreciated; please describe what you changed and how you tested it.
