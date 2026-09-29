@@ -3,7 +3,7 @@
 Utility AI for Unreal that plugs into **both** Behavior Tree and StateTree
 rather than replacing either, authored in a **diffable, mergeable text format**
 with score-breakdown tooling and session record/replay — implemented from
-[`Documentation/README.md`](../Documentation/README.md).
+[`docs/design.md`](../docs/design.md).
 
 ```
 make          # 56 C++ tests, 81 TypeScript tests, and the cross-check between them
