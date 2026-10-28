@@ -1,5 +1,7 @@
 # AI Behavior Toolkit
 
+[![CI](https://github.com/syedjafri06193/AI-Behavior-Tree-Toolkit-proj/actions/workflows/ci.yml/badge.svg)](https://github.com/syedjafri06193/AI-Behavior-Tree-Toolkit-proj/actions/workflows/ci.yml)
+
 Utility AI for Unreal that plugs into both Behavior Tree and StateTree, authored
 in a diffable, mergeable text format, with score-breakdown tooling and session
 record/replay for debugging beyond PIE.
@@ -8,22 +10,22 @@ record/replay for debugging beyond PIE.
 > and a blackboard inspector — but Unreal already ships all three. This project
 > targets what's missing: **utility AI**, **diffable authoring** (`.uasset` is
 > binary), and **debugging in cooked builds and dedicated servers**. Reasoning in
-> [`docs/design.md`](docs/design.md) §1.
+> [`1—Documentation/design.md`](1—Documentation/design.md) §1.
 
 ## Repository layout
 
 ```
 .
 ├── README.md          ← you are here
-├── docs/
+├── 1—Documentation/   ← all documentation (index in its README)
 │   ├── design.md      ← full design guide (the spec code comments cite)
-│   └── design.pdf     ← same guide, PDF
+│   ├── design.pdf     ← same guide, PDF
+│   └── v1/            tuning guide, file format, debug protocol, spec errata
 └── v1/                ← first implementation
     ├── core/          C++17 scoring engine, zero engine types, CMake + tests + bench
     ├── editor/        TypeScript: YAML format, validation, compiler, debug protocol, replay
     ├── unreal/        Unreal plugin (BT + StateTree bindings, debug server)
-    ├── samples/       guard.behavior.yaml
-    └── docs/          tuning guide, file format, debug protocol, spec errata
+    └── samples/       guard.behavior.yaml
 ```
 
 Each `vN/` directory is a self-contained iteration. Start with

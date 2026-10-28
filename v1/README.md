@@ -3,7 +3,7 @@
 Utility AI for Unreal that plugs into **both** Behavior Tree and StateTree
 rather than replacing either, authored in a **diffable, mergeable text format**
 with score-breakdown tooling and session record/replay — implemented from
-[`docs/design.md`](../docs/design.md).
+[`../1—Documentation/design.md`](../1—Documentation/design.md).
 
 ```
 make          # 56 C++ tests, 81 TypeScript tests, and the cross-check between them
@@ -205,9 +205,9 @@ in `core/` and covered.
 
 ## Further reading
 
-- [`docs/notes-on-the-spec.md`](docs/notes-on-the-spec.md) — every place this
+- [`../1—Documentation/v1/notes-on-the-spec.md`](../1—Documentation/v1/notes-on-the-spec.md) — every place this
   diverges from the design document, and why
-- [`docs/utility-ai.md`](docs/utility-ai.md) — curves, compensation, and how to
+- [`../1—Documentation/v1/utility-ai.md`](../1—Documentation/v1/utility-ai.md) — curves, compensation, and how to
   tune them
-- [`docs/format.md`](docs/format.md) — the YAML schema and the compiled layout
-- [`docs/protocol.md`](docs/protocol.md) — the debug wire protocol
+- [`../1—Documentation/v1/format.md`](../1—Documentation/v1/format.md) — the YAML schema and the compiled layout
+- [`../1—Documentation/v1/protocol.md`](../1—Documentation/v1/protocol.md) — the debug wire protocol
