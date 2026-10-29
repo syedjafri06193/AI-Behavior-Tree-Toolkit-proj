@@ -17,7 +17,7 @@
  * "surprisingly effective at finding authoring mistakes". They are the only
  * two here that need to actually run the scorer.
  *
- * One deliberate departure, flagged in docs/notes-on-the-spec.md: the table
+ * One deliberate departure, flagged in 1—Documentation/v1/notes-on-the-spec.md: the table
  * lists an inverted range as an error, but an inverted range is the natural
  * way to author "closer is better" and the core supports it. Only a
  * ZERO-WIDTH range is an error here; inverted is accepted silently.

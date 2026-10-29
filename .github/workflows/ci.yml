@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: v1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: v1/editor/package-lock.json
+
+      - name: Core (C++17) — build and unit tests
+        run: |
+          cmake -S core -B core/build -DCMAKE_BUILD_TYPE=Release
+          cmake --build core/build --config Release
+          ctest --test-dir core/build -C Release --output-on-failure
+
+      - name: Editor — install
+        working-directory: v1/editor
+        run: npm ci
+
+      - name: Editor — type-check
+        working-directory: v1/editor
+        run: npx tsc --noEmit
+
+      - name: Editor — tests (incl. cross-check against the C++ core)
+        working-directory: v1/editor
+        run: npx vitest run
+
+      - name: Demo compiles the sample
+        run: make demo

@@ -229,7 +229,7 @@ describe("the validator itself", () => {
   it("accepts an inverted range, which is how 'closer is better' is written", () => {
     // The document's table lists an inverted range as an error. It is not one:
     // the core supports it and it is the natural authoring for a falling
-    // response. See docs/notes-on-the-spec.md.
+    // response. See 1—Documentation/v1/notes-on-the-spec.md.
     const behavior = guard();
     behavior.actions[0]!.considerations[1]!.range = [3000, 0];
     const errors = validate(behavior).filter((d) => d.severity === "error");

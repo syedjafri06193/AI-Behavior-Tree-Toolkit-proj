@@ -41,7 +41,7 @@ TEST(compensation_removes_the_bias_against_complex_actions) {
     // case the document works through in 3.3 and appears to have been carried
     // across to the 2-vs-8 case in the test without being recomputed.
     //
-    // See docs/notes-on-the-spec.md. What the test was reaching for -- that
+    // See 1—Documentation/v1/notes-on-the-spec.md. What the test was reaching for -- that
     // compensation substantially closes the gap -- is true and is asserted
     // here against the number the formula actually produces.
     const float simple = Compensate(std::pow(0.9f, 2), 2);
